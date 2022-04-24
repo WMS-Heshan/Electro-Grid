@@ -17,10 +17,22 @@ public class Connection implements Serializable {
     private int connectionId;  
 	@Column(name="line")
     private String line;
-	@Column(name="year")	
-	private String year;
-	@Column(name="maintenance_type")
-	private String maintenanceType;
+	@Column(name="connection_type")	
+	private String connectionType;
+	@Column(name="length")
+	private int length;
+	@Column(name="tower")
+	private int tower;
+	@Column(name="serial_no")
+	private int serialNo;
+	@Column(name="from_date")
+	private String fromDate;
+	@Column(name="to_date")
+	private String toDate;
+	@Column (name="province")
+	private String province;
+	@Column (name="area")
+	private String area;
 	
 	public int getConnectionId() {
 		return connectionId;
@@ -34,17 +46,54 @@ public class Connection implements Serializable {
 	public void setLine(String line) {
 		this.line = line;
 	}
-	public String getYear() {
-		return year;
+	public String getConnectionType() {
+		return connectionType;
 	}
-	public void setYear(String year) {
-		this.year = year;
+	public void setConnectionType(String connectionType) {
+		this.connectionType = connectionType;
 	}
-	public String getMaintenanceType() {
-		return maintenanceType;
+	public int getLength() {
+		return length;
 	}
-	public void setMaintenanceType(String maintenanceType) {
-		this.maintenanceType = maintenanceType;
+	public void setLength(int length) {
+		this.length = length;
 	}
+	public int getTower() {
+		return tower;
+	}
+	public void setTower(int tower) {
+		this.tower = tower;
+	}
+	public int getSerialNo() {
+		return serialNo;
+	}
+	public void setSerialNo(int serialNo) {
+		this.serialNo = serialNo;
+	}
+	public String getFromDate() {
+		return fromDate;
+	}
+	public void setFromDate(String fromDate) {
+		this.fromDate = fromDate;
+	}
+	public String getToDate() {
+		return toDate;
+	}
+	public void setToDate(String toDate) {
+		this.toDate = toDate;
+	}
+	public String getProvince() {
+		return province;
+	}
+	public void setProvince(String province) {
+		this.province = province;
+	}
+	public String getArea() {
+		return area;
+	}
+	public void setArea(String area) {
+		this.area = area;
+	}
+	
 	
 } 
