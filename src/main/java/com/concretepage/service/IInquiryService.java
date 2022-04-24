@@ -4,6 +4,7 @@ import java.util.List;
 import com.concretepage.entity.Inquiry;
 
 public interface IInquiryService {
+	//API Actions
 	List<Inquiry> getAllInquiry();
 
 	Inquiry getInquiryById(int inquiry_Id);
