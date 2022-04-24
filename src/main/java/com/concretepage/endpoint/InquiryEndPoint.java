@@ -26,16 +26,18 @@ import com.concretepage.service.IInquiryService;
 @Component
 @Path("/inquiry")
 public class InquiryEndPoint {
-	private static final Logger logger = LoggerFactory.getLogger(InquiryEndPoint.class);	
+	private static final Logger logger = LoggerFactory.getLogger(InquiryEndPoint.class);
 	@Autowired
 	private IInquiryService inquiryService;
+//Get Method for get Inquiry Details
 	@GET
 	@Path("/inqdetails")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getInquiryDetails() {
-		List<Inquiry> list = inquiryService.getAllInquiry(); 
+		List<Inquiry> list = inquiryService.getAllInquiry();
 		return Response.ok(list).build();
 	}
+//Get Method for get Inquiry Details By Id
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -43,30 +45,33 @@ public class InquiryEndPoint {
 		Inquiry inquiry = inquiryService.getInquiryById(id);
 		return Response.ok(inquiry).build();
 	}
+//Post Method for Add Inquiry Details
 	@POST
 	@Path("/inqadd")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response addInquiry(Inquiry inquiry) {
-        boolean isAdded = inquiryService.addInquiry(inquiry);
-        if (!isAdded) {
-        	logger.info("Inquiry already exits.");
-	        return Response.status(Status.CONFLICT).build();
-        }
-        return Response.created(URI.create("/spring-app/inquiry/"+ inquiry.getInquiry_Id())).build();
-	}	
+		boolean isAdded = inquiryService.addInquiry(inquiry);
+		if (!isAdded) {
+			logger.info("Inquiry already exits.");
+			return Response.status(Status.CONFLICT).build();
+		}
+		return Response.created(URI.create("/spring-app/inquiry/" + inquiry.getInquiry_Id())).build();
+	}
+//Put Method for Update Inquiry Details
 	@PUT
 	@Path("/inqupdate")
 	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)	
+	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateInquiry(Inquiry inquiry) {
 		inquiryService.updateInquiry(inquiry);
 		return Response.ok(inquiry).build();
 	}
+//Delete Method for Delete Inquiry Details
 	@DELETE
 	@Path("/{id}")
-	@Consumes(MediaType.APPLICATION_JSON)		
+	@Consumes(MediaType.APPLICATION_JSON)
 	public Response deleteInquiry(@PathParam("id") Integer id) {
 		inquiryService.deleteInquiry(id);
 		return Response.noContent().build();
-	}	
+	}
 }
