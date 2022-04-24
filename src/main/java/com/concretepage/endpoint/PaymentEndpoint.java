@@ -68,6 +68,6 @@ public class PaymentEndpoint {
 	@Consumes(MediaType.APPLICATION_JSON)		
 	public Response deletePaymentDetails(@PathParam("id") Integer id) {
 		paymentService.deletePaymentDetails(id);
-		return Response.noContent().build();
+		return Response.status(200).entity("Customer Deleted Successfully!!!").build();
 	}	
 }
