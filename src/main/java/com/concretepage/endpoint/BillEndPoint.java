@@ -4,9 +4,11 @@ import java.net.URI;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -46,5 +48,13 @@ public class BillEndPoint {
 	        return Response.status(Status.CONFLICT).build();
         }
         return Response.created(URI.create("/spring-app/bill/")).entity("Bill Added Successfully").build();
+	}	
+	
+	@DELETE
+	@Path("/{id}")
+	@Consumes(MediaType.APPLICATION_JSON)		
+	public Response deleteBill(@PathParam("id") Integer id) {
+		billService.deleteBill(id);
+		return Response.status(200).entity("Bill Deleted Successfully").build();
 	}	
 }
