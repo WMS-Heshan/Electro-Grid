@@ -9,6 +9,6 @@ public interface BillDAO {
     void addBill(Bill bill);
     void updateBill(Bill bill);
     void deleteBill(int billid);
-    //boolean articleExists(String title, String category);
+    boolean billExists(String billno, String custid);
 
 }

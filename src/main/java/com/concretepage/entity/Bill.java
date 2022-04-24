@@ -41,13 +41,6 @@ public class Bill implements Serializable{
 	
 	
 
-	public int getBillId() {
-		return billId;
-	}
-	
-	
-	
-
 	public void setBillId(int billId) {
 		this.billId = billId;
 	}
