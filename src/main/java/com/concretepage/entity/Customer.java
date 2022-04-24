@@ -1,4 +1,5 @@
 package com.concretepage.entity;
+
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -7,38 +8,39 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 @Entity
-@Table(name="customer")
-public class Customer implements Serializable { 
+@Table(name = "customer")
+public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 
-	@Column(name="customer_id")
-    private int customerId;
-  
-	@Column(name="name")
-    private String name;
+	@Column(name = "customer_id")
+	private int customerId;
 
-	@Column(name="mobile")
-    private String mobile;
+	@Column(name = "name")
+	private String name;
 
-	@Column(name="email")
-    private String email;
+	@Column(name = "mobile")
+	private String mobile;
 
-	@Column(name="username")
-    private String username;
+	@Column(name = "email")
+	private String email;
 
-	@Column(name="password")
-    private String password;
+	@Column(name = "username")
+	private String username;
 
-	@Column(name="address")
-    private String address;
+	@Column(name = "password")
+	private String password;
 
+	@Column(name = "address")
+	private String address;
 
 	public int getCustomerId() {
 		return customerId;
 	}
+
 	public void setCutomerId(int customerId) {
 		this.customerId = customerId;
 	}
@@ -46,6 +48,7 @@ public class Customer implements Serializable {
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -53,6 +56,7 @@ public class Customer implements Serializable {
 	public String getMobile() {
 		return mobile;
 	}
+
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
@@ -60,14 +64,15 @@ public class Customer implements Serializable {
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-
 	public String getUsername() {
 		return username;
 	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -75,6 +80,7 @@ public class Customer implements Serializable {
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -82,12 +88,9 @@ public class Customer implements Serializable {
 	public String getAddress() {
 		return address;
 	}
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
 
-
-
-
-
-} 
+}
