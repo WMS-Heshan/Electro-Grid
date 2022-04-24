@@ -29,7 +29,7 @@ public class JerseyClient {
 	}
 	public void getEmployeeById(int employeeId) {
 		Client client = ClientBuilder.newClient();
-		WebTarget base = client.target("http://localhost:8081/spring-app/employee");
+		WebTarget base = client.target("http://localhost:8080/spring-app/employee");
 		WebTarget employeeById = base.path("{id}").resolveTemplate("id",employeeId);
 		Employee employee = employeeById.request(MediaType.APPLICATION_JSON)
 				.get(Employee.class);
