@@ -29,6 +29,7 @@ public class PaymentEndpoint {
 	private static final Logger logger = LoggerFactory.getLogger(PaymentEndpoint.class);	
 	@Autowired
 	private IPaymentPortalService paymentService;
+//get details by id
 	@GET
 	@Path("/details")
 	@Produces(MediaType.APPLICATION_JSON)

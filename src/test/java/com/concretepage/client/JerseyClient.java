@@ -113,6 +113,8 @@ public class JerseyClient {
 	        
 		    client.close();
 		}
+
+
 		public void updatePaymentDetails(PaymentDetails paymentdetails) {
 			Client client = ClientBuilder.newClient();
 			WebTarget base = client.target("http://localhost:8080/spring-app/payment");
