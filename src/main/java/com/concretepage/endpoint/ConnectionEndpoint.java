@@ -67,6 +67,6 @@ public class ConnectionEndpoint {
 	@Consumes(MediaType.APPLICATION_JSON)		
 	public Response deleteConnection(@PathParam("id") Integer id) {
 		connectionService.deleteConnection(id);
-		return Response.noContent().build();
+		return Response.status(200).entity("Connection Deleted Successfully!!").build();
 	}	
 }
