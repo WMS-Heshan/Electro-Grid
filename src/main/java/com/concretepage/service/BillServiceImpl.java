@@ -33,19 +33,17 @@ public class BillServiceImpl implements BillService{
 	@Override
 	public Bill getBillById(int billId) {
 		Bill obj = billDAO.getBillById(billId);
-		return obj;
+		return obj ;
 	}
 
 	@Override
 	public void updateBill(Bill billId) {
-		// TODO Auto-generated method stub
-		billDAO.addBill(billId);	
+		billDAO.updateBill(billId);	
 	}
 	
 
 	@Override
 	public void deleteBill(int billId) {
-		
 		billDAO.deleteBill(billId);
 	}
 

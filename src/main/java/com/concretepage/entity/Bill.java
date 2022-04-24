@@ -93,6 +93,7 @@ public class Bill implements Serializable {
 	}
 
 	public void setCostPer_month(float costPer_month) {
+		
 		this.costPer_month = costPer_month;
 	}
 

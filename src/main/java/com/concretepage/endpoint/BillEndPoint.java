@@ -73,6 +73,6 @@ public class BillEndPoint {
 	@Consumes(MediaType.APPLICATION_JSON)	
 	public Response updateBill(Bill bill) {
 		billService.updateBill(bill);
-		return Response.status(200).entity("Bill updated Successfully").build();
+		return Response.ok(bill).entity("Bill updated Successfully").build();
 	}
 }

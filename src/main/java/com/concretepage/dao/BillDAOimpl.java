@@ -41,12 +41,12 @@ public class BillDAOimpl implements BillDAO {
 	@Override
 	public void updateBill(Bill bill) {
 		Bill bil = getBillById(bill.getBillId());
-		bil.setBillId(bill.getBillId());
 		bil.setBillno(bill.getBillno());
+		bil.setCustid(bill.getCustid());
 		bil.setUnittype(bill.getUnittype());
 		bil.setNounits(bill.getNounits());
 		bil.setMonth(bill.getMonth());
-		bil.setSub_total(bill.getSub_total());
+		bil.setCostPer_month(bill.getCostPer_month());
 		entityManager.flush();
 	}
 
