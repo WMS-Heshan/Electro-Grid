@@ -15,24 +15,17 @@ public class Connection implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="connection_id")
     private int connectionId;  
-	@Column(name="line")
-    private String line;
 	@Column(name="connection_type")	
 	private String connectionType;
-	@Column(name="length")
-	private int length;
-	@Column(name="tower")
-	private int tower;
-	@Column(name="serial_no")
-	private int serialNo;
-	@Column(name="from_date")
-	private String fromDate;
-	@Column(name="to_date")
-	private String toDate;
-	@Column (name="province")
-	private String province;
-	@Column (name="area")
-	private String area;
+	@Column (name="connection_name")
+	private String connectionName;
+	@Column(name="connection_desc")
+	private String connectionDesc;
+	@Column(name="connection_date")
+	private String connectionDate;
+	@Column (name="connection_price")
+	private int connectionPrice;
+	
 	
 	public int getConnectionId() {
 		return connectionId;
@@ -40,60 +33,36 @@ public class Connection implements Serializable {
 	public void setConnectionId(int connectionId) {
 		this.connectionId = connectionId;
 	}
-	public String getLine() {
-		return line;
-	}
-	public void setLine(String line) {
-		this.line = line;
-	}
 	public String getConnectionType() {
 		return connectionType;
 	}
 	public void setConnectionType(String connectionType) {
 		this.connectionType = connectionType;
 	}
-	public int getLength() {
-		return length;
+	public String getConnectionName() {
+		return connectionName;
 	}
-	public void setLength(int length) {
-		this.length = length;
+	public void setConnectionName(String connectionName) {
+		this.connectionName = connectionName;
 	}
-	public int getTower() {
-		return tower;
+	public String getConnectionDesc() {
+		return connectionDesc;
 	}
-	public void setTower(int tower) {
-		this.tower = tower;
+	public void setConnectionDesc(String connectionDesc) {
+		this.connectionDesc = connectionDesc;
 	}
-	public int getSerialNo() {
-		return serialNo;
+
+	public String getConnectionDate() {
+		return connectionDate;
 	}
-	public void setSerialNo(int serialNo) {
-		this.serialNo = serialNo;
+	public void setConnectionDate(String connectionDate) {
+		this.connectionDate = connectionDate;
 	}
-	public String getFromDate() {
-		return fromDate;
+	public int getConnectionPrice() {
+		return connectionPrice;
 	}
-	public void setFromDate(String fromDate) {
-		this.fromDate = fromDate;
+	public void setConnectionPrice(int connectionPrice) {
+		this.connectionPrice = connectionPrice;
 	}
-	public String getToDate() {
-		return toDate;
-	}
-	public void setToDate(String toDate) {
-		this.toDate = toDate;
-	}
-	public String getProvince() {
-		return province;
-	}
-	public void setProvince(String province) {
-		this.province = province;
-	}
-	public String getArea() {
-		return area;
-	}
-	public void setArea(String area) {
-		this.area = area;
-	}
-	
 	
 } 
