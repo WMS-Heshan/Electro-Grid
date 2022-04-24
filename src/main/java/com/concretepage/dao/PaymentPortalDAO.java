@@ -32,12 +32,12 @@ public class PaymentPortalDAO implements IPaymentPortalDAO {
 		PaymentDetails payment = getPaymentDetailsById(paymentdetails.getPaymentId());
 		payment.setFullname(paymentdetails.getFullname());
 		payment.setEmail(paymentdetails.getEmail());
-		payment.setEmail(paymentdetails.getMobile());
-		payment.setEmail(paymentdetails.getAdderss());
-		payment.setEmail(paymentdetails.getZipcode());
-		payment.setEmail(paymentdetails.getPaymenttype());
-		payment.setEmail(paymentdetails.getDate());
-		payment.setEmail(paymentdetails.getAmount());
+		payment.setMobile(paymentdetails.getMobile());
+		payment.setAdderss(paymentdetails.getAdderss());
+		payment.setZipcode(paymentdetails.getZipcode());
+		payment.setPaymenttype(paymentdetails.getPaymenttype());
+		payment.setDate(paymentdetails.getDate());
+		payment.setAmount(paymentdetails.getAmount());
 		entityManager.flush();
 	}
 	@Override
