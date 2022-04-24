@@ -10,61 +10,61 @@ import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.concretepage.entity.Article;
+import com.concretepage.entity.Inquiry;
 
 public class JerseyClient {
-	public void getArticleDetails() {
+	public void getInquiryDetails() {
 		Client client = ClientBuilder.newClient();
-		WebTarget base = client.target("http://localhost:8080/spring-app/article");
-		WebTarget details = base.path("details");
-		List<Article> list = details.request(MediaType.APPLICATION_JSON)
-				.get(new GenericType<List<Article>>() {});
+		WebTarget base = client.target("http://localhost:8080/spring-app/inquiry");
+		WebTarget details = base.path("inqdetails");
+		List<Inquiry> list = details.request(MediaType.APPLICATION_JSON)
+				.get(new GenericType<List<Inquiry>>() {});
 		
-	    list.stream().forEach(article -> 
-	        System.out.println(article.getArticleId()+", "+ article.getTitle()+", "+ article.getCategory()));
+	    list.stream().forEach(inquiry -> 
+	        System.out.println(inquiry.getInquiry_Id()+", "+ inquiry.getFull_name()+", "+ inquiry.getPhone_no()+", "+ inquiry.getEmail()+", "+ inquiry.getAddress()+","+ inquiry.getDescription()));
 	    
 	    client.close();
 	}
-	public void getArticleById(int articleId) {
+	public void getInquiryById(int inquiry_Id) {
 		Client client = ClientBuilder.newClient();
-		WebTarget base = client.target("http://localhost:8080/spring-app/article");
-		WebTarget articleById = base.path("{id}").resolveTemplate("id", articleId);
-		Article article = articleById.request(MediaType.APPLICATION_JSON)
-				.get(Article.class);
+		WebTarget base = client.target("http://localhost:8080/spring-app/inquiry");
+		WebTarget inquiryById = base.path("{id}").resolveTemplate("id", inquiry_Id);
+		Inquiry inquiry = inquiryById.request(MediaType.APPLICATION_JSON)
+				.get(Inquiry.class);
 		
-        System.out.println(article.getArticleId()+", "+ article.getTitle()+", "+ article.getCategory());
+        System.out.println(inquiry.getInquiry_Id()+", "+ inquiry.getFull_name()+", "+ inquiry.getPhone_no()+", "+ inquiry.getEmail()+", "+ inquiry.getAddress()+","+ inquiry.getDescription());
         
 	    client.close();
 	}
-	public void addArticle(Article article) {
+	public void addInquiry(Inquiry inquiry) {
 		Client client = ClientBuilder.newClient();
-		WebTarget base = client.target("http://localhost:8080/spring-app/article");
-		WebTarget add = base.path("add");
+		WebTarget base = client.target("http://localhost:8080/spring-app/inquiry");
+		WebTarget add = base.path("inqadd");
 		Response response = add.request(MediaType.APPLICATION_JSON)
-				.post(Entity.json(article));
+				.post(Entity.json(inquiry));
 		
 		System.out.println("Response Http Status: "+ response.getStatus());
         System.out.println(response.getLocation());
         
 	    client.close();
 	}
-	public void updateArticle(Article article) {
+	public void updateInquiry(Inquiry inquiry) {
 		Client client = ClientBuilder.newClient();
-		WebTarget base = client.target("http://localhost:8080/spring-app/article");
-		WebTarget update = base.path("update");
+		WebTarget base = client.target("http://localhost:8080/spring-app/inquiry");
+		WebTarget update = base.path("inqupdate");
 		Response response = update.request(MediaType.APPLICATION_JSON)
-				.put(Entity.json(article));
+				.put(Entity.json(inquiry));
 		
 		System.out.println("Response Http Status: "+ response.getStatus());
-		Article resArticle = response.readEntity(Article.class);
-		System.out.println(resArticle.getArticleId()+", "+ resArticle.getTitle()+", "+ resArticle.getCategory());
+		Inquiry inq = response.readEntity(Inquiry.class);
+		System.out.println(inq.getInquiry_Id()+", "+ inq.getFull_name()+", "+ inq.getPhone_no()+", "+ inq.getEmail()+", "+ inq.getAddress()+","+ inq.getDescription());
         
 	    client.close();
 	}
-	public void deleteArticle(int articleId) {
+	public void deleteInquiry(int inquiry_Id) {
 		Client client = ClientBuilder.newClient();
-		WebTarget base = client.target("http://localhost:8080/spring-app/article");
-		WebTarget deleteById = base.path("{id}").resolveTemplate("id", articleId);
+		WebTarget base = client.target("http://localhost:8080/spring-app/inquiry");
+		WebTarget deleteById = base.path("{id}").resolveTemplate("id", inquiry_Id);
 		Response response = deleteById.request(MediaType.APPLICATION_JSON)
 				.delete();
 		
@@ -77,15 +77,18 @@ public class JerseyClient {
 	}	
 	public static void main(String[] args) {
 		JerseyClient jerseyClient = new JerseyClient();
-	    jerseyClient.getArticleDetails();
+	    jerseyClient.getInquiryDetails();
 		//jerseyClient.getArticleById(102);
 		
-		Article article = new Article();
-		article.setTitle("Spring REST Security using Hibernate2");
-		article.setCategory("Spring"); 
+		Inquiry inquiry = new Inquiry();
+		inquiry.setFull_name("Spring REST Security using Hibernate2");
+		inquiry.setPhone_no("Spring"); 
+		inquiry.setEmail("REST");
+		inquiry.setAddress("Address");
+		inquiry.setDescription("Description");
 		//jerseyClient.addArticle(article);
 		
-		article.setArticleId(105);
+		inquiry.setInquiry_Id(105);
 		//jerseyClient.updateArticle(article);
 		
 		//jerseyClient.deleteArticle(105);

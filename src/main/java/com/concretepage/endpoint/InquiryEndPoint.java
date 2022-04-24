@@ -20,53 +20,53 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.concretepage.entity.Article;
-import com.concretepage.service.IArticleService;
+import com.concretepage.entity.Inquiry;
+import com.concretepage.service.IInquiryService;
 
 @Component
-@Path("/article")
-public class ArticleEndpoint {
-	private static final Logger logger = LoggerFactory.getLogger(ArticleEndpoint.class);	
+@Path("/inquiry")
+public class InquiryEndPoint {
+	private static final Logger logger = LoggerFactory.getLogger(InquiryEndPoint.class);	
 	@Autowired
-	private IArticleService articleService;
+	private IInquiryService inquiryService;
 	@GET
-	@Path("/details")
+	@Path("/inqdetails")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getArticleDetails() {
-		List<Article> list = articleService.getAllArticles(); 
+	public Response getInquiryDetails() {
+		List<Inquiry> list = inquiryService.getAllInquiry(); 
 		return Response.ok(list).build();
 	}
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getArticleById(@PathParam("id") Integer id) {
-		Article article = articleService.getArticleById(id);
-		return Response.ok(article).build();
+	public Response getInquiryById(@PathParam("id") Integer id) {
+		Inquiry inquiry = inquiryService.getInquiryById(id);
+		return Response.ok(inquiry).build();
 	}
 	@POST
-	@Path("/add")
+	@Path("/inqadd")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response addArticle(Article article) {
-        boolean isAdded = articleService.addArticle(article);
+	public Response addInquiry(Inquiry inquiry) {
+        boolean isAdded = inquiryService.addInquiry(inquiry);
         if (!isAdded) {
-        	logger.info("Article already exits.");
+        	logger.info("Inquiry already exits.");
 	        return Response.status(Status.CONFLICT).build();
         }
-        return Response.created(URI.create("/spring-app/article/"+ article.getArticleId())).build();
+        return Response.created(URI.create("/spring-app/inquiry/"+ inquiry.getInquiry_Id())).build();
 	}	
 	@PUT
-	@Path("/update")
+	@Path("/inqupdate")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)	
-	public Response updateArticle(Article article) {
-		articleService.updateArticle(article);
-		return Response.ok(article).build();
+	public Response updateInquiry(Inquiry inquiry) {
+		inquiryService.updateInquiry(inquiry);
+		return Response.ok(inquiry).build();
 	}
 	@DELETE
 	@Path("/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)		
-	public Response deleteArticle(@PathParam("id") Integer id) {
-		articleService.deleteArticle(id);
+	public Response deleteInquiry(@PathParam("id") Integer id) {
+		inquiryService.deleteInquiry(id);
 		return Response.noContent().build();
 	}	
 }
