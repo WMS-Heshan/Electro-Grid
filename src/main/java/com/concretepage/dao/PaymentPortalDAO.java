@@ -39,10 +39,10 @@ public class PaymentPortalDAO implements IPaymentPortalDAO {
 		entityManager.remove(getPaymentDetailsById(paymentId));
 	}
 	@Override
-	public boolean PaymentDetailsExists(String title, String category) {
-		String hql = "FROM Article as atcl WHERE atcl.title = ? and atcl.category = ?";
-		int count = entityManager.createQuery(hql).setParameter(1, title)
-		              .setParameter(2, category).getResultList().size();
+	public boolean PaymentDetailsExists(String fullname, String email) {
+		String hql = "FROM PaymentDetails as atcl WHERE atcl.fullname = ? and atcl.email = ?";
+		int count = entityManager.createQuery(hql).setParameter(1, fullname)
+		              .setParameter(2, email).getResultList().size();
 		return count > 0 ? true : false;
 	}
 }
