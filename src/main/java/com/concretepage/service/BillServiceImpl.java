@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.concretepage.dao.BillDAO;
+import com.concretepage.entity.Article;
 import com.concretepage.entity.Bill;
 
 @Service
@@ -31,8 +32,8 @@ public class BillServiceImpl implements BillService{
 
 	@Override
 	public Bill getBillById(int billId) {
-		// TODO Auto-generated method stub
-		return null;
+		Bill obj = billDAO.getBillById(billId);
+		return obj;
 	}
 
 	@Override
