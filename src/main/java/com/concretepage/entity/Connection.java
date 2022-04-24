@@ -19,6 +19,9 @@ public class Connection implements Serializable {
     private String line;
 	@Column(name="year")	
 	private String year;
+	@Column(name="maintenance_type")
+	private String maintenanceType;
+	
 	public int getConnectionId() {
 		return connectionId;
 	}
@@ -37,4 +40,11 @@ public class Connection implements Serializable {
 	public void setYear(String year) {
 		this.year = year;
 	}
+	public String getMaintenanceType() {
+		return maintenanceType;
+	}
+	public void setMaintenanceType(String maintenanceType) {
+		this.maintenanceType = maintenanceType;
+	}
+	
 } 
