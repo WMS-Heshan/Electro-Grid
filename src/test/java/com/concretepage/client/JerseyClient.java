@@ -92,11 +92,11 @@ public class JerseyClient {
 		inquiry.setEmail("REST");
 		inquiry.setAddress("Address");
 		inquiry.setDescription("Description");
-		// jerseyClient.addArticle(article);
+		// jerseyClient.addInquiry(inquiry);
 
 		inquiry.setInquiry_Id(105);
-		// jerseyClient.updateArticle(article);
+		// jerseyClient.updateInquiry(inquiry);
 
-		// jerseyClient.deleteArticle(105);
+		// jerseyClient.deleteInquiry(105);
 	}
 }
