@@ -80,56 +80,56 @@ public class JerseyClient {
 /////////////////////////////////////////////////////
 		public void getAllPaymentDetails() {
 			Client client = ClientBuilder.newClient();
-			WebTarget base = client.target("http://localhost:8080/spring-app/article");
+			WebTarget base = client.target("http://localhost:8080/spring-app/payment");
 			WebTarget details = base.path("details");
-			List<Article> list = details.request(MediaType.APPLICATION_JSON)
-					.get(new GenericType<List<Article>>() {});
+			List<PaymentDetails> list = details.request(MediaType.APPLICATION_JSON)
+					.get(new GenericType<List<PaymentDetails>>() {});
 			
-		    list.stream().forEach(article -> 
-		        System.out.println(article.getArticleId()+", "+ article.getTitle()+", "+ article.getCategory()));
+		    list.stream().forEach(payment -> 
+		        System.out.println(payment.getPaymentId()+", "+ payment.getFullname()+","+ payment.getEmail()+","+ payment.getMobile()+","+ payment.getAdderss()+","+ payment.getZipcode()+","+ payment.getPaymenttype()+","+payment.getDate()+","+ payment.getAmount()));                    
 		    
 		    client.close();
 		}
-		public void getPaymentDetailsById(int articleId) {
+		public void getPaymentDetailsById(int paymentId) {
 			Client client = ClientBuilder.newClient();
-			WebTarget base = client.target("http://localhost:8080/spring-app/article");
-			WebTarget articleById = base.path("{id}").resolveTemplate("id", articleId);
-			Article article = articleById.request(MediaType.APPLICATION_JSON)
-					.get(Article.class);
+			WebTarget base = client.target("http://localhost:8080/spring-app/payment");
+			WebTarget paymentById = base.path("{id}").resolveTemplate("id", paymentId);
+			PaymentDetails paymentdetails = paymentById.request(MediaType.APPLICATION_JSON)
+					.get(PaymentDetails.class);
 			
-	        System.out.println(article.getArticleId()+", "+ article.getTitle()+", "+ article.getCategory());
+	        System.out.println(paymentdetails.getPaymentId()+", "+ paymentdetails.getFullname()+", "+ paymentdetails.getEmail()+","+ paymentdetails.getMobile()+","+ paymentdetails.getAdderss()+","+ paymentdetails.getZipcode()+","+ paymentdetails.getPaymenttype()+","+paymentdetails.getDate()+","+ paymentdetails.getAmount());
 	        
 		    client.close();
 		}
-		public void addPaymentDetails(Article article) {
+		public void addPaymentDetails(PaymentDetails paymentdetails) {
 			Client client = ClientBuilder.newClient();
-			WebTarget base = client.target("http://localhost:8080/spring-app/article");
+			WebTarget base = client.target("http://localhost:8080/spring-app/payment");
 			WebTarget add = base.path("add");
 			Response response = add.request(MediaType.APPLICATION_JSON)
-					.post(Entity.json(article));
+					.post(Entity.json(paymentdetails));
 			
 			System.out.println("Response Http Status: "+ response.getStatus());
 	        System.out.println(response.getLocation());
 	        
 		    client.close();
 		}
-		public void updatePaymentDetails(Article article) {
+		public void updatePaymentDetails(PaymentDetails paymentdetails) {
 			Client client = ClientBuilder.newClient();
-			WebTarget base = client.target("http://localhost:8080/spring-app/article");
+			WebTarget base = client.target("http://localhost:8080/spring-app/payment");
 			WebTarget update = base.path("update");
 			Response response = update.request(MediaType.APPLICATION_JSON)
-					.put(Entity.json(article));
+					.put(Entity.json(paymentdetails));
 			
 			System.out.println("Response Http Status: "+ response.getStatus());
-			Article resArticle = response.readEntity(Article.class);
-			System.out.println(resArticle.getArticleId()+", "+ resArticle.getTitle()+", "+ resArticle.getCategory());
+			PaymentDetails resPaymentDetails = response.readEntity(PaymentDetails.class);
+			System.out.println(resPaymentDetails.getPaymentId()+", "+ resPaymentDetails.getFullname()+", "+ resPaymentDetails.getEmail()+","+ resPaymentDetails.getMobile()+","+ resPaymentDetails.getAdderss()+","+ resPaymentDetails.getZipcode()+","+ resPaymentDetails.getPaymenttype()+","+resPaymentDetails.getDate()+","+ resPaymentDetails.getAmount());
 	        
 		    client.close();
 		}
-		public void deletePaymentDetails(int articleId) {
+		public void deletePaymentDetails(int paymentId) {
 			Client client = ClientBuilder.newClient();
-			WebTarget base = client.target("http://localhost:8080/spring-app/article");
-			WebTarget deleteById = base.path("{id}").resolveTemplate("id", articleId);
+			WebTarget base = client.target("http://localhost:8080/spring-app/payment");
+			WebTarget deleteById = base.path("{id}").resolveTemplate("id", paymentId);
 			Response response = deleteById.request(MediaType.APPLICATION_JSON)
 					.delete();
 			
@@ -139,11 +139,12 @@ public class JerseyClient {
 			}
 	        
 		    client.close();
-		}	
+		}
+		
 		public static void main(String[] args) {
 			JerseyClient jerseyClient = new JerseyClient();
 		    jerseyClient.getArticleDetails();
-		    jerseyClient.getAllPaymentDetails();
+		    
 			//jerseyClient.getArticleById(102);
 			
 			Article article = new Article();
@@ -151,13 +152,16 @@ public class JerseyClient {
 			article.setCategory("Spring"); 
 			//jerseyClient.addArticle(article);
 			
-			PaymentDetails paymentdetails = new PaymentDetails();
-			paymentdetails.setFullname("Spring REST Security using Hibernate2");
-			paymentdetails.setEmail("Spring");
+			
 			
 			article.setArticleId(105);
 			//jerseyClient.updateArticle(article);
 			//jerseyClient.deleteArticle(105);
+			jerseyClient.getAllPaymentDetails();
+			
+			PaymentDetails paymentdetails = new PaymentDetails();
+			paymentdetails.setFullname("Spring REST Security using Hibernate2");
+			paymentdetails.setEmail("Spring");
 			
 			paymentdetails.setPaymentId(105);
 		}
