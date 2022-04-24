@@ -88,8 +88,8 @@ public class JerseyClient {
 		//jerseyClient.addArticle(article);
 		
 		employee.setEmployeeId(105);
-		//jerseyClient.updateArticle(article);
 		
-		//jerseyClient.deleteArticle(105);
+		
+		
 	}
 }

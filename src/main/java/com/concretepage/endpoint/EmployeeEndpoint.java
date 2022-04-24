@@ -67,6 +67,6 @@ public class EmployeeEndpoint {
 	@Consumes(MediaType.APPLICATION_JSON)		
 	public Response deleteEmployee(@PathParam("id") Integer id) {
 		employeeService.deleteEmployee(id);
-		return Response.noContent().build();
+		return Response.status(200).entity("Customer Deleted Successfully!!!").build();
 	}	
 }
