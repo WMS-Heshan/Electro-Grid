@@ -29,6 +29,24 @@ public class BillServiceImpl implements BillService{
 	       }
 	}
 
+	@Override
+	public Bill getBillById(int billId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateBill(Bill billId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteBill(int billId) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 
 }

@@ -8,52 +8,59 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.concretepage.entity.Article;
 import com.concretepage.entity.Bill;
 
 @Transactional
 @Repository
-public class BillDAOimpl implements BillDAO  {
+public class BillDAOimpl implements BillDAO {
 	@PersistenceContext
 	private EntityManager entityManager;
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Bill> getAllBills() {
-		//get all bills
-		String  hql ="FROM Bill as bill ORDER BY bill.billId";
+		// get all bills
+		String hql = "FROM Bill as bill ORDER BY bill.billId";
 		return (List<Bill>) entityManager.createQuery(hql).getResultList();
 	}
-	
+
 	@Override
 	public Bill getBillById(int billId) {
-		// TODO Auto-generated method stub
-		return null;
+		return entityManager.find(Bill.class, billId);
+		
 	}
 
 	@Override
 	public void addBill(Bill bill) {
 		// addbills
 		entityManager.persist(bill);
-		
+
 	}
 
 	@Override
 	public void updateBill(Bill bill) {
-		// TODO Auto-generated method stub
-		
+		Bill bil = getBillById(bill.getBillId());
+		bil.setBillId(bill.getBillId());
+		bil.setBillno(bill.getBillno());
+		bil.setUnittype(bill.getUnittype());
+		bil.setNounits(bill.getNounits());
+		bil.setMonth(bill.getMonth());
+		bil.setSub_total(bill.getSub_total());
+		entityManager.flush();
 	}
 
 	@Override
 	public void deleteBill(int billid) {
-		// TODO Auto-generated method stub
-		
+		entityManager.remove(getBillById(billid));
+
 	}
 
 	@Override
 	public boolean billExists(String billno, String custid) {
 		String hql = "FROM Bill as bill WHERE bill.billno = ? and bill.custid = ?";
-		int count = entityManager.createQuery(hql).setParameter(1,billno)
-		              .setParameter(2, custid).getResultList().size();
+		int count = entityManager.createQuery(hql).setParameter(1, billno).setParameter(2, custid).getResultList()
+				.size();
 		return count > 0 ? true : false;
 	}
 

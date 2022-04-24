@@ -8,37 +8,38 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-@Entity
-@Table(name="bills")
 
-public class Bill implements Serializable{
+@Entity
+@Table(name = "bills")
+
+public class Bill implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="bill_id")
-    private int billId; 
-	
-	@Column(name="bill_no")
-    private String billno;
-	
-	@Column(name="cust_id")	
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "bill_id")
+	private int billId;
+
+	@Column(name = "bill_no")
+	private String billno;
+
+	@Column(name = "cust_id")
 	private String custid;
-	
-	@Column(name="unit_type")	
-	private int  unittype;
-	
-	@Column(name="no_units")	
-	private int  nounits;
-	
-	@Column(name="month")	
-	private String  month ;
-	
-	@Column(name="costPer_month")	
-	private float  costPer_month;
-	
-	@Column(name="sub_total")	
-	private float  sub_taotal;
-	
+
+	@Column(name = "unit_type")
+	private int unittype;
+
+	@Column(name = "no_units")
+	private int nounits;
+
+	@Column(name = "month")
+	private String month;
+
+	@Column(name = "costPer_month")
+	private float costPer_month;
+
+	@Column(name = "sub_total")
+	private float sub_total;
+
 	public int getBillId() {
 		return billId;
 	}
@@ -95,16 +96,18 @@ public class Bill implements Serializable{
 		this.costPer_month = costPer_month;
 	}
 
-	public float getSub_taotal() {
-		return sub_taotal;
+	public float getSub_total() {
+		if (unittype == 1) {
+			unittype = 50;
+		} else if (unittype == 2) {
+			unittype = 100;
+		}
+		sub_total = nounits * unittype;
+		return sub_total;
 	}
 
-	public void setSub_taotal(float sub_taotal) {
-		this.sub_taotal = sub_taotal;
+	public void setSub_total(float sub_total) {
+		this.sub_total = sub_total;
 	}
-
-	
-	
-	
 
 }
