@@ -7,6 +7,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -19,6 +20,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.concretepage.entity.Article;
 import com.concretepage.entity.Bill;
 import com.concretepage.service.BillService;
 
@@ -57,4 +59,13 @@ public class BillEndPoint {
 		billService.deleteBill(id);
 		return Response.status(200).entity("Bill Deleted Successfully").build();
 	}	
+	
+	@PUT
+	@Path("/update")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)	
+	public Response updateBill(Bill bill) {
+		billService.updateBill(bill);
+		return Response.status(200).entity("Bill updated Successfully").build();
+	}
 }
