@@ -30,13 +30,13 @@ public class PaymentPortalDAO implements IPaymentPortalDAO {
 	@Override
 	public void updatePaymentDetails(PaymentDetails paymentdetails) {
 		PaymentDetails payment = getPaymentDetailsById(paymentdetails.getPaymentId());
-		payment.setTitle(paymentdetails.getTitle());
-		payment.setCategory(paymentdetails.getCategory());
+		payment.setFullname(paymentdetails.getFullname());
+		payment.setEmail(paymentdetails.getEmail());
 		entityManager.flush();
 	}
 	@Override
-	public void deletePaymentDetails(int articleId) {
-		entityManager.remove(getPaymentDetailsById(articleId));
+	public void deletePaymentDetails(int paymentId) {
+		entityManager.remove(getPaymentDetailsById(paymentId));
 	}
 	@Override
 	public boolean PaymentDetailsExists(String title, String category) {
