@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import com.concretepage.endpoint.CustomerEndpoint;
 
 @Component
-@ApplicationPath("/spring-app")
+@ApplicationPath("/Electro-grid")
 public class JerseyConfig extends ResourceConfig {
 	public JerseyConfig() {
 		register(CustomerEndpoint.class);
