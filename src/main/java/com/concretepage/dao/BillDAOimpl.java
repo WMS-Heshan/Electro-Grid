@@ -15,14 +15,15 @@ import com.concretepage.entity.Bill;
 public class BillDAOimpl implements BillDAO  {
 	@PersistenceContext
 	private EntityManager entityManager;
-
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Bill> getAllBills() {
 		//get all bills
-		String  hql ="FROM Bill as bill ORDER BY bill.billid";
+		String  hql ="FROM Bill as bill ORDER BY bill.billId";
 		return (List<Bill>) entityManager.createQuery(hql).getResultList();
 	}
-
+	
 	@Override
 	public Bill getBillById(int billId) {
 		// TODO Auto-generated method stub

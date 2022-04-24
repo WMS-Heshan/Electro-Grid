@@ -67,6 +67,6 @@ public class ArticleEndpoint {
 	@Consumes(MediaType.APPLICATION_JSON)		
 	public Response deleteArticle(@PathParam("id") Integer id) {
 		articleService.deleteArticle(id);
-		return Response.noContent().build();
+		return Response.status(200).entity("Article Deleted Successfully").build();
 	}	
 }

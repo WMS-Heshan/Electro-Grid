@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
-@Table(name="bill")
+@Table(name="bills")
 
 public class Bill implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -39,7 +39,9 @@ public class Bill implements Serializable{
 	@Column(name="sub_total")	
 	private float  sub_taotal;
 	
-	
+	public int getBillId() {
+		return billId;
+	}
 
 	public void setBillId(int billId) {
 		this.billId = billId;
