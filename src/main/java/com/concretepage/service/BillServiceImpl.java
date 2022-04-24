@@ -43,8 +43,8 @@ public class BillServiceImpl implements BillService{
 
 	@Override
 	public void deleteBill(int billId) {
-		// TODO Auto-generated method stub
 		
+		billDAO.deleteBill(billId);
 	}
 
 	
