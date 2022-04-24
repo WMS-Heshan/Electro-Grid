@@ -10,61 +10,63 @@ import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.concretepage.entity.Article;
+import com.concretepage.entity.Employee;
 
 public class JerseyClient {
-	public void getArticleDetails() {
+	//Employee Details API Methods
+	public void getEmployeeDetails() {
 		Client client = ClientBuilder.newClient();
-		WebTarget base = client.target("http://localhost:8080/spring-app/article");
+		WebTarget base = client.target("http://localhost:8080/spring-app/employee");
 		WebTarget details = base.path("details");
-		List<Article> list = details.request(MediaType.APPLICATION_JSON)
-				.get(new GenericType<List<Article>>() {});
+		List<Employee> list = details.request(MediaType.APPLICATION_JSON)
+				.get(new GenericType<List<Employee>>() {});
 		
-	    list.stream().forEach(article -> 
-	        System.out.println(article.getArticleId()+", "+ article.getTitle()+", "+ article.getCategory()));
+	    list.stream().forEach(employee -> 
+	        System.out.println(employee.getEmployeeId()+", "+ employee.getName()+", "+ employee.getPhonenumber()+","+ employee.getEmailaddress()+","+ employee.getEmployeetype()+","+ employee.getDescription()));
+		  
 	    
 	    client.close();
 	}
-	public void getArticleById(int articleId) {
+	public void getEmployeeById(int employeeId) {
 		Client client = ClientBuilder.newClient();
-		WebTarget base = client.target("http://localhost:8080/spring-app/article");
-		WebTarget articleById = base.path("{id}").resolveTemplate("id", articleId);
-		Article article = articleById.request(MediaType.APPLICATION_JSON)
-				.get(Article.class);
+		WebTarget base = client.target("http://localhost:8081/spring-app/employee");
+		WebTarget employeeById = base.path("{id}").resolveTemplate("id",employeeId);
+		Employee employee = employeeById.request(MediaType.APPLICATION_JSON)
+				.get(Employee.class);
 		
-        System.out.println(article.getArticleId()+", "+ article.getTitle()+", "+ article.getCategory());
+        System.out.println(employee.getEmployeeId()+", "+ employee.getName()+", "+employee.getPhonenumber()+","+ employee.getEmailaddress()+","+ employee.getEmployeetype()+","+ employee.getDescription());
         
 	    client.close();
 	}
-	public void addArticle(Article article) {
+	public void addEmployee(Employee employee) {
 		Client client = ClientBuilder.newClient();
-		WebTarget base = client.target("http://localhost:8080/spring-app/article");
+		WebTarget base = client.target("http://localhost:8080/spring-app/employee");
 		WebTarget add = base.path("add");
 		Response response = add.request(MediaType.APPLICATION_JSON)
-				.post(Entity.json(article));
+				.post(Entity.json(employee));
 		
 		System.out.println("Response Http Status: "+ response.getStatus());
         System.out.println(response.getLocation());
         
 	    client.close();
 	}
-	public void updateArticle(Article article) {
+	public void updateEmployee(Employee employee) {
 		Client client = ClientBuilder.newClient();
-		WebTarget base = client.target("http://localhost:8080/spring-app/article");
+		WebTarget base = client.target("http://localhost:8080/spring-app/employee");
 		WebTarget update = base.path("update");
 		Response response = update.request(MediaType.APPLICATION_JSON)
-				.put(Entity.json(article));
+				.put(Entity.json(employee));
 		
 		System.out.println("Response Http Status: "+ response.getStatus());
-		Article resArticle = response.readEntity(Article.class);
-		System.out.println(resArticle.getArticleId()+", "+ resArticle.getTitle()+", "+ resArticle.getCategory());
+		Employee resEmployee = response.readEntity(Employee.class);
+		System.out.println(resEmployee.getEmployeeId()+", "+ resEmployee.getName()+", "+ resEmployee.getPhonenumber() +", "+resEmployee.getEmailaddress() +","+ resEmployee.getEmployeetype() +","+ resEmployee.getDescription());;
         
 	    client.close();
 	}
-	public void deleteArticle(int articleId) {
+	public void deleteEmplyee(int employeeId) {
 		Client client = ClientBuilder.newClient();
-		WebTarget base = client.target("http://localhost:8080/spring-app/article");
-		WebTarget deleteById = base.path("{id}").resolveTemplate("id", articleId);
+		WebTarget base = client.target("http://localhost:8080/spring-app/employee");
+		WebTarget deleteById = base.path("{id}").resolveTemplate("id", employeeId);
 		Response response = deleteById.request(MediaType.APPLICATION_JSON)
 				.delete();
 		
@@ -77,15 +79,15 @@ public class JerseyClient {
 	}	
 	public static void main(String[] args) {
 		JerseyClient jerseyClient = new JerseyClient();
-	    jerseyClient.getArticleDetails();
+	    jerseyClient.getEmployeeDetails();
 		//jerseyClient.getArticleById(102);
 		
-		Article article = new Article();
-		article.setTitle("Spring REST Security using Hibernate2");
-		article.setCategory("Spring"); 
+		Employee employee = new Employee();
+		employee.setName("Spring REST Security using Hibernate2");
+		employee.setPhonenumber("Spring"); 
 		//jerseyClient.addArticle(article);
 		
-		article.setArticleId(105);
+		employee.setEmployeeId(105);
 		//jerseyClient.updateArticle(article);
 		
 		//jerseyClient.deleteArticle(105);
