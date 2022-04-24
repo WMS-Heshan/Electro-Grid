@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.concretepage.entity.Article;
+
 import com.concretepage.entity.Bill;
 import com.concretepage.service.BillService;
 
@@ -38,6 +38,13 @@ public class BillEndPoint {
 	public Response getArticleDetails() {
 		List<Bill> list = billService.getAllArticles(); 
 		return Response.ok(list).build();
+	}
+	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getArticleById(@PathParam("id") Integer id) {
+		Bill bill = billService.getBillById(id);
+		return Response.ok(bill).build();
 	}
 	
 	@POST
