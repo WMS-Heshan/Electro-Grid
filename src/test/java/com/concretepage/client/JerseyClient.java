@@ -75,6 +75,7 @@ public class JerseyClient {
 //Delete Inquiry Details
 	public void deleteInquiry(int inquiry_Id) {
 		Client client = ClientBuilder.newClient();
+		//URL for Delete Inquiry Details
 		WebTarget base = client.target("http://localhost:8080/Electro-grid/inquiry");
 		WebTarget deleteById = base.path("{id}").resolveTemplate("id", inquiry_Id);
 		Response response = deleteById.request(MediaType.APPLICATION_JSON).delete();
