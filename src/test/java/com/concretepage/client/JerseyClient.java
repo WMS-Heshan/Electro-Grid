@@ -14,6 +14,7 @@ public class JerseyClient {
 	// Get Inquiry Details List
 	public void getInquiryDetails() {
 		Client client = ClientBuilder.newClient();
+		//URL for get All Inquiry Details
 		WebTarget base = client.target("http://localhost:8080/Electro-grid/inquiry");
 		WebTarget details = base.path("inqdetails");
 		List<Inquiry> list = details.request(MediaType.APPLICATION_JSON).get(new GenericType<List<Inquiry>>() {
