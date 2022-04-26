@@ -49,7 +49,7 @@ public class CustomerEndpoint {
 		return Response.ok(customer).build();
 	}
 
-	//Add customer in to database
+    //Add customer in database
 	@POST
 	@Path("/add")
 	@Consumes(MediaType.APPLICATION_JSON)
