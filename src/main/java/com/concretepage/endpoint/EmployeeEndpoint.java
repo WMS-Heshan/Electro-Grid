@@ -62,7 +62,8 @@ public class EmployeeEndpoint {
 	@Consumes(MediaType.APPLICATION_JSON)	
 	public Response updateEmployee(Employee employee) {
 		employeeService.updateEmployee(employee);
-		return Response.ok(employee).build();
+		return Response.status(200).entity("Employee Details Updated Successfully!!!").build();
+		
 	}
 	@DELETE
 	@Path("/{id}")
