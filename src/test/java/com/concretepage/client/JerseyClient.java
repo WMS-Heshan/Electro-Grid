@@ -14,7 +14,7 @@ public class JerseyClient {
 	// Get Inquiry Details List
 	public void getInquiryDetails() {
 		Client client = ClientBuilder.newClient();
-		WebTarget base = client.target("http://localhost:8080/spring-app/inquiry");
+		WebTarget base = client.target("http://localhost:8080/Electro-grid/inquiry");
 		WebTarget details = base.path("inqdetails");
 		List<Inquiry> list = details.request(MediaType.APPLICATION_JSON).get(new GenericType<List<Inquiry>>() {
 		});
@@ -30,7 +30,7 @@ public class JerseyClient {
 //Get Inquiry Details By Id
 	public void getInquiryById(int inquiry_Id) {
 		Client client = ClientBuilder.newClient();
-		WebTarget base = client.target("http://localhost:8080/spring-app/inquiry");
+		WebTarget base = client.target("http://localhost:8080/Electro-grid/inquiry");
 		WebTarget inquiryById = base.path("{id}").resolveTemplate("id", inquiry_Id);
 		Inquiry inquiry = inquiryById.request(MediaType.APPLICATION_JSON).get(Inquiry.class);
 
@@ -43,19 +43,20 @@ public class JerseyClient {
 //Add Inquiry Details
 	public void addInquiry(Inquiry inquiry) {
 		Client client = ClientBuilder.newClient();
-		WebTarget base = client.target("http://localhost:8080/spring-app/inquiry");
+		WebTarget base = client.target("http://localhost:8080/Electro-grid/inquiry");
 		WebTarget add = base.path("inqadd");
 		Response response = add.request(MediaType.APPLICATION_JSON).post(Entity.json(inquiry));
 
 		System.out.println("Response Http Status: " + response.getStatus());
 		System.out.println(response.getLocation());
+		
 
 		client.close();
 	}
 //Update Inquiry Details
 	public void updateInquiry(Inquiry inquiry) {
 		Client client = ClientBuilder.newClient();
-		WebTarget base = client.target("http://localhost:8080/spring-app/inquiry");
+		WebTarget base = client.target("http://localhost:8080/Electro-grid/inquiry");
 		WebTarget update = base.path("inqupdate");
 		Response response = update.request(MediaType.APPLICATION_JSON).put(Entity.json(inquiry));
 
@@ -63,13 +64,14 @@ public class JerseyClient {
 		Inquiry inq = response.readEntity(Inquiry.class);
 		System.out.println(inq.getInquiry_Id() + ", " + inq.getFull_name() + ", " + inq.getPhone_no() + ", "
 				+ inq.getEmail() + ", " + inq.getAddress() + "," + inq.getDescription());
+		
 
 		client.close();
 	}
 //Delete Inquiry Details
 	public void deleteInquiry(int inquiry_Id) {
 		Client client = ClientBuilder.newClient();
-		WebTarget base = client.target("http://localhost:8080/spring-app/inquiry");
+		WebTarget base = client.target("http://localhost:8080/Electro-grid/inquiry");
 		WebTarget deleteById = base.path("{id}").resolveTemplate("id", inquiry_Id);
 		Response response = deleteById.request(MediaType.APPLICATION_JSON).delete();
 

@@ -55,7 +55,7 @@ public class InquiryEndPoint {
 			logger.info("Inquiry already exits.");
 			return Response.status(Status.CONFLICT).build();
 		}
-		return Response.created(URI.create("/spring-app/inquiry/" + inquiry.getInquiry_Id())).build();
+		return Response.created(URI.create("/Electro-grid/inquiry/" + inquiry.getInquiry_Id())).entity(inquiry.getInquiry_Id()+" Inquiry Added Successfully").build();
 	}
 //Put Method for Update Inquiry Details
 	@PUT
@@ -64,7 +64,7 @@ public class InquiryEndPoint {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateInquiry(Inquiry inquiry) {
 		inquiryService.updateInquiry(inquiry);
-		return Response.ok(inquiry).build();
+		return Response.ok(inquiry).entity(inquiry.getInquiry_Id()+" Inquiry Updated Successfully").build();
 	}
 //Delete Method for Delete Inquiry Details
 	@DELETE
@@ -72,6 +72,6 @@ public class InquiryEndPoint {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response deleteInquiry(@PathParam("id") Integer id) {
 		inquiryService.deleteInquiry(id);
-		return Response.noContent().build();
+		return Response.status(200).entity(" Inquiry Deleted Successfully").build();
 	}
 }
