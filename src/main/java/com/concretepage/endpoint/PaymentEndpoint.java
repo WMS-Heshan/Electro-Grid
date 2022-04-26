@@ -53,6 +53,7 @@ public class PaymentEndpoint {
         	logger.info("payment deatils already exits.");
 	        return Response.status(Status.CONFLICT).build();
         }
+        return Response.created(URI.create("/spring-app/payment/"+ paymentdetails.getPaymentId())).entity("Payment Add Successfully!!!").build();
 	}	
 	@PUT
 	@Path("/update")
@@ -60,6 +61,7 @@ public class PaymentEndpoint {
 	@Consumes(MediaType.APPLICATION_JSON)	
 	public Response updatePaymentDetails(PaymentDetails paymentdetails) {
 		paymentService.updatePaymentDetails(paymentdetails);
+		return Response.ok(paymentdetails).entity("Payment Detail Update Successfully!!!").build();
 	}
 	@DELETE
 	@Path("/{id}")
