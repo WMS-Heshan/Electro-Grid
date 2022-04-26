@@ -110,6 +110,7 @@ public class JerseyClient {
 			
 			System.out.println("Response Http Status: "+ response.getStatus());
 	        System.out.println(response.getLocation());
+	        System.out.println("Add payment details successfully.");
 	        
 		    client.close();
 		}
@@ -125,7 +126,7 @@ public class JerseyClient {
 			System.out.println("Response Http Status: "+ response.getStatus());
 			PaymentDetails resPaymentDetails = response.readEntity(PaymentDetails.class);
 			System.out.println(resPaymentDetails.getPaymentId()+", "+ resPaymentDetails.getFullname()+", "+ resPaymentDetails.getEmail()+","+ resPaymentDetails.getMobile()+","+ resPaymentDetails.getAdderss()+","+ resPaymentDetails.getZipcode()+","+ resPaymentDetails.getPaymenttype()+","+resPaymentDetails.getDate()+","+ resPaymentDetails.getAmount());
-	        
+			System.out.println("Update Payment Details successfully.");
 		    client.close();
 		}
 		public void deletePaymentDetails(int paymentId) {

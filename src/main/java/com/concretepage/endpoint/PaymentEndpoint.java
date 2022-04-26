@@ -53,7 +53,7 @@ public class PaymentEndpoint {
         	logger.info("payment deatils already exits.");
 	        return Response.status(Status.CONFLICT).build();
         }
-        return Response.created(URI.create("/spring-app/payment/"+ paymentdetails.getPaymentId())).build();
+        return Response.created(URI.create("/spring-app/payment/"+ paymentdetails.getPaymentId())).entity("Payment Update Successfully!!!").build();
 	}	
 	@PUT
 	@Path("/update")
@@ -61,13 +61,13 @@ public class PaymentEndpoint {
 	@Consumes(MediaType.APPLICATION_JSON)	
 	public Response updatePaymentDetails(PaymentDetails paymentdetails) {
 		paymentService.updatePaymentDetails(paymentdetails);
-		return Response.ok(paymentdetails).build();
+		return Response.ok(paymentdetails).entity("Payment Update Successfully!!!").build();
 	}
 	@DELETE
 	@Path("/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)		
 	public Response deletePaymentDetails(@PathParam("id") Integer id) {
 		paymentService.deletePaymentDetails(id);
-		return Response.status(200).entity("Customer Deleted Successfully!!!").build();
+		return Response.status(200).entity("Payment Deleted Successfully!!!").build();
 	}	
 }
