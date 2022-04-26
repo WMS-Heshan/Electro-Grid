@@ -49,6 +49,7 @@ public class InquiryDAO implements IInquiryDAO {
 	public void deleteInquiry(int inquiry_Id) {
 		entityManager.remove(getInquiryById(inquiry_Id));
 	}
+	//Inquiry Exists Constructor
 
 	@Override
 	public boolean inquiryExists(String full_name, String phone_no, String email, String address, String description) {
