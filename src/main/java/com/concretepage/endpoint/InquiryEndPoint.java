@@ -64,6 +64,7 @@ public class InquiryEndPoint {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateInquiry(Inquiry inquiry) {
 		inquiryService.updateInquiry(inquiry);
+		//Response Message for Update
 		return Response.ok(inquiry).entity(inquiry.getInquiry_Id()+" Inquiry Updated Successfully").build();
 	}
 //Delete Method for Delete Inquiry Details
