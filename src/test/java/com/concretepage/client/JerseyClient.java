@@ -59,6 +59,7 @@ public class JerseyClient {
 //Update Inquiry Details
 	public void updateInquiry(Inquiry inquiry) {
 		Client client = ClientBuilder.newClient();
+		//URL for Update Inquiry Details
 		WebTarget base = client.target("http://localhost:8080/Electro-grid/inquiry");
 		WebTarget update = base.path("inqupdate");
 		Response response = update.request(MediaType.APPLICATION_JSON).put(Entity.json(inquiry));
