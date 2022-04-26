@@ -52,7 +52,7 @@ public class ConnectionEndpoint {
         	logger.info("Connection already exits.");
 	        return Response.status(Status.CONFLICT).build();
         }
-        return Response.created(URI.create("/spring-app/connection/"+ connection.getConnectionId())).build();
+        return Response.created(URI.create("/spring-app/connection/"+ connection.getConnectionId())).entity("Connection Added Successfully!!").build();
 	}	
 	@PUT
 	@Path("/update")
@@ -60,7 +60,7 @@ public class ConnectionEndpoint {
 	@Consumes(MediaType.APPLICATION_JSON)	
 	public Response updateConnection(Connection connection) {
 		connectionService.updateConnection(connection);
-		return Response.ok(connection).build();
+		return Response.status(200).entity("Connection Updated Successfully!!").build();
 	}
 	@DELETE
 	@Path("/{id}")
