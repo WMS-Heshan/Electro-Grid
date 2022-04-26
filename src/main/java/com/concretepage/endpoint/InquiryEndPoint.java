@@ -26,6 +26,7 @@ import com.concretepage.service.IInquiryService;
 @Component
 @Path("/inquiry")
 public class InquiryEndPoint {
+	//Declare final logger objects
 	private static final Logger logger = LoggerFactory.getLogger(InquiryEndPoint.class);
 	@Autowired
 	private IInquiryService inquiryService;
