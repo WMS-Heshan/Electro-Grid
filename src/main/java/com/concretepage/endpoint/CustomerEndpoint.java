@@ -23,6 +23,7 @@ import org.springframework.stereotype.Component;
 import com.concretepage.entity.Customer;
 import com.concretepage.service.ICustomerService;
 
+
 @Component
 @Path("/customer")
 public class CustomerEndpoint {
@@ -30,6 +31,7 @@ public class CustomerEndpoint {
 	@Autowired
 	private ICustomerService customerService;
 
+	//Get details of all customers
 	@GET
 	@Path("/details")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -38,6 +40,7 @@ public class CustomerEndpoint {
 		return Response.ok(list).build();
 	}
 
+	//Get details of one customer
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -46,6 +49,7 @@ public class CustomerEndpoint {
 		return Response.ok(customer).build();
 	}
 
+	//Add customer in to database
 	@POST
 	@Path("/add")
 	@Consumes(MediaType.APPLICATION_JSON)
