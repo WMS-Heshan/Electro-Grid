@@ -55,6 +55,7 @@ public class InquiryEndPoint {
 			logger.info("Inquiry already exits.");
 			return Response.status(Status.CONFLICT).build();
 		}
+		//Response Message for Insert
 		return Response.created(URI.create("/Electro-grid/inquiry/" + inquiry.getInquiry_Id())).entity(inquiry.getInquiry_Id()+" Inquiry Added Successfully").build();
 	}
 //Put Method for Update Inquiry Details
