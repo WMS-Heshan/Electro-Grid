@@ -56,7 +56,7 @@ public class BillEndPoint {
         	logger.info("Bill already exits.");
 	        return Response.status(Status.CONFLICT).build();
         }
-        return Response.created(URI.create("/spring-app/bill/")).entity("Bill Added Successfully").build();
+        return Response.created(URI.create("/spring-app/bill/")).entity(bill.getBillId()+" Bill Added Successfully").build();
 	}	
 	
 	@DELETE
