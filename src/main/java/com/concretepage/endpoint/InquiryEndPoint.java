@@ -72,6 +72,7 @@ public class InquiryEndPoint {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response deleteInquiry(@PathParam("id") Integer id) {
 		inquiryService.deleteInquiry(id);
+		//Response Message for Delete
 		return Response.status(200).entity(" Inquiry Deleted Successfully").build();
 	}
 }
