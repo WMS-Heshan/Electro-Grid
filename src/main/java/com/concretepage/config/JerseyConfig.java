@@ -5,12 +5,12 @@ import javax.ws.rs.ApplicationPath;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
 
-import com.concretepage.endpoint.EmployeeEndpoint;
+import com.concretepage.endpoint.CustomerEndpoint;
 
 @Component
 @ApplicationPath("/Electro-grid")
 public class JerseyConfig extends ResourceConfig {
 	public JerseyConfig() {
-		register(EmployeeEndpoint.class);
+		register(CustomerEndpoint.class);
 	}
 }
