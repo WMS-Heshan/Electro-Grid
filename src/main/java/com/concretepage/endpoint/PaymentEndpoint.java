@@ -61,6 +61,7 @@ public class PaymentEndpoint {
 	public Response updatePaymentDetails(PaymentDetails paymentdetails) {
 		paymentService.updatePaymentDetails(paymentdetails);
 		return Response.ok(paymentdetails).entity("Payment Update Successfully!!!").build();
+		return Response.ok(paymentdetails).entity("Payment Details Update Successfully!!!").build();
 	}
 	@DELETE
 	@Path("/{id}")
