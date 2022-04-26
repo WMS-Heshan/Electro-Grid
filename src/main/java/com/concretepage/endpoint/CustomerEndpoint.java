@@ -55,7 +55,7 @@ public class CustomerEndpoint {
 			logger.info("Customer already exits.");
 			return Response.status(Status.CONFLICT).build();
 		}
-		return Response.created(URI.create("/spring-app/customer/" + customer.getCustomerId())).entity("Customer Added Successfully!!!").build();
+	return Response.created(URI.create("/Electro-grid/customer/" + customer.getCustomerId())).entity("Customer Added Successfully!!!").build();
 	}
 
 	@PUT
@@ -64,8 +64,10 @@ public class CustomerEndpoint {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateCustomer(Customer customer) {
 		customerService.updateCustomer(customer);
-		return Response.ok(customer).build();
+		return Response.status(200).entity("Customer Details Update Successfull!!!").build();
 	}
+	
+	
 
 	@DELETE
 	@Path("/{id}")
