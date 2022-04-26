@@ -1,11 +1,16 @@
 Manifest-Version: 1.0
 <<<<<<< HEAD
+<<<<<<< HEAD
 Built-By: User
 Build-Jdk: 17.0.2
 =======
 Built-By: Wasundara
 Build-Jdk: 11.0.14
 >>>>>>> origin/Wasundara
+=======
+Built-By: sheha
+Build-Jdk: 11.0.14
+>>>>>>> origin/shehan
 Implementation-Title: spring-demo
 Implementation-Version: 0.0.1-SNAPSHOT
 Implementation-Vendor-Id: com.concretepage
