@@ -16,7 +16,7 @@ import com.concretepage.entity.PaymentDetails;
 public class JerseyClient {
 	public void getArticleDetails() {
 		Client client = ClientBuilder.newClient();
-		WebTarget base = client.target("http://localhost:8080/spring-app/article");
+		WebTarget base = client.target("http://localhost:8080/Electro-grid/article");
 		WebTarget details = base.path("details");
 		List<Article> list = details.request(MediaType.APPLICATION_JSON)
 				.get(new GenericType<List<Article>>() {});
@@ -28,7 +28,7 @@ public class JerseyClient {
 	}
 	public void getArticleById(int articleId) {
 		Client client = ClientBuilder.newClient();
-		WebTarget base = client.target("http://localhost:8080/spring-app/article");
+		WebTarget base = client.target("http://localhost:8080/Electro-grid/article");
 		WebTarget articleById = base.path("{id}").resolveTemplate("id", articleId);
 		Article article = articleById.request(MediaType.APPLICATION_JSON)
 				.get(Article.class);
@@ -39,7 +39,7 @@ public class JerseyClient {
 	}
 	public void addArticle(Article article) {
 		Client client = ClientBuilder.newClient();
-		WebTarget base = client.target("http://localhost:8080/spring-app/article");
+		WebTarget base = client.target("http://localhost:8080/Electro-grid/article");
 		WebTarget add = base.path("add");
 		Response response = add.request(MediaType.APPLICATION_JSON)
 				.post(Entity.json(article));
@@ -51,7 +51,7 @@ public class JerseyClient {
 	}
 	public void updateArticle(Article article) {
 		Client client = ClientBuilder.newClient();
-		WebTarget base = client.target("http://localhost:8080/spring-app/article");
+		WebTarget base = client.target("http://localhost:8080/Electro-grid/article");
 		WebTarget update = base.path("update");
 		Response response = update.request(MediaType.APPLICATION_JSON)
 				.put(Entity.json(article));
@@ -64,7 +64,7 @@ public class JerseyClient {
 	}
 	public void deleteArticle(int articleId) {
 		Client client = ClientBuilder.newClient();
-		WebTarget base = client.target("http://localhost:8080/spring-app/article");
+		WebTarget base = client.target("http://localhost:8080/Electro-grid/article");
 		WebTarget deleteById = base.path("{id}").resolveTemplate("id", articleId);
 		Response response = deleteById.request(MediaType.APPLICATION_JSON)
 				.delete();
@@ -80,7 +80,7 @@ public class JerseyClient {
 /////////////////////////////////////////////////////
 		public void getAllPaymentDetails() {
 			Client client = ClientBuilder.newClient();
-			WebTarget base = client.target("http://localhost:8080/spring-app/payment");
+			WebTarget base = client.target("http://localhost:8080/Electro-grid/payment");
 			WebTarget details = base.path("details");
 			List<PaymentDetails> list = details.request(MediaType.APPLICATION_JSON)
 					.get(new GenericType<List<PaymentDetails>>() {});
@@ -92,7 +92,7 @@ public class JerseyClient {
 		}
 		public void getPaymentDetailsById(int paymentId) {
 			Client client = ClientBuilder.newClient();
-			WebTarget base = client.target("http://localhost:8080/spring-app/payment");
+			WebTarget base = client.target("http://localhost:8080/Electro-grid/payment");
 			WebTarget paymentById = base.path("{id}").resolveTemplate("id", paymentId);
 			PaymentDetails paymentdetails = paymentById.request(MediaType.APPLICATION_JSON)
 					.get(PaymentDetails.class);
@@ -103,7 +103,7 @@ public class JerseyClient {
 		}
 		public void addPaymentDetails(PaymentDetails paymentdetails) {
 			Client client = ClientBuilder.newClient();
-			WebTarget base = client.target("http://localhost:8080/spring-app/payment");
+			WebTarget base = client.target("http://localhost:8080/Electro-grid/payment");
 			WebTarget add = base.path("add");
 			Response response = add.request(MediaType.APPLICATION_JSON)
 					.post(Entity.json(paymentdetails));
@@ -118,7 +118,7 @@ public class JerseyClient {
 
 		public void updatePaymentDetails(PaymentDetails paymentdetails) {
 			Client client = ClientBuilder.newClient();
-			WebTarget base = client.target("http://localhost:8080/spring-app/payment");
+			WebTarget base = client.target("http://localhost:8080/Electro-grid/payment");
 			WebTarget update = base.path("update");
 			Response response = update.request(MediaType.APPLICATION_JSON)
 					.put(Entity.json(paymentdetails));
@@ -131,7 +131,7 @@ public class JerseyClient {
 		}
 		public void deletePaymentDetails(int paymentId) {
 			Client client = ClientBuilder.newClient();
-			WebTarget base = client.target("http://localhost:8080/spring-app/payment");
+			WebTarget base = client.target("http://localhost:8080/Electro-grid/payment");
 			WebTarget deleteById = base.path("{id}").resolveTemplate("id", paymentId);
 			Response response = deleteById.request(MediaType.APPLICATION_JSON)
 					.delete();
