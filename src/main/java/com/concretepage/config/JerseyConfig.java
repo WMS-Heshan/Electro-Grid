@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.concretepage.endpoint.InquiryEndPoint;
 
+//Application Path
 @Component
 @ApplicationPath("/Electro-grid")
 public class JerseyConfig extends ResourceConfig {
