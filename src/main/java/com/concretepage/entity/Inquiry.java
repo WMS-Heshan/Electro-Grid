@@ -13,6 +13,7 @@ import javax.persistence.Table;
 @Table(name = "inquiries")
 public class Inquiry implements Serializable {
 	private static final long serialVersionUID = 1L;
+	//Create Column and Variables
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "inquiry_id")
