@@ -31,6 +31,7 @@ public class JerseyClient {
 //Get Inquiry Details By Id
 	public void getInquiryById(int inquiry_Id) {
 		Client client = ClientBuilder.newClient();
+		//URL for get Inquiry Details By Id
 		WebTarget base = client.target("http://localhost:8080/Electro-grid/inquiry");
 		WebTarget inquiryById = base.path("{id}").resolveTemplate("id", inquiry_Id);
 		Inquiry inquiry = inquiryById.request(MediaType.APPLICATION_JSON).get(Inquiry.class);
