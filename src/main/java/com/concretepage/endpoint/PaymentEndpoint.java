@@ -60,7 +60,6 @@ public class PaymentEndpoint {
 	@Consumes(MediaType.APPLICATION_JSON)	
 	public Response updatePaymentDetails(PaymentDetails paymentdetails) {
 		paymentService.updatePaymentDetails(paymentdetails);
-		return Response.ok(paymentdetails).entity("Payment Details Update Successfully!!!").build();
 	}
 	@DELETE
 	@Path("/{id}")
