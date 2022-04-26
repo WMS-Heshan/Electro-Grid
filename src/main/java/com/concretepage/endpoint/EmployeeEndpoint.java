@@ -52,8 +52,10 @@ public class EmployeeEndpoint {
         	logger.info("Employee already exits.");
 	        return Response.status(Status.CONFLICT).build();
         }
-        return Response.created(URI.create("/Electro-grid/employee/"+ employee.getEmployeeId())).build();
+        return Response.created(URI.create("/Electro-grid/employee/"+ employee.getEmployeeId())).entity("Customer Added Successfully!!!").build();
+   
 	}	
+
 	@PUT
 	@Path("/update")
 	@Produces(MediaType.APPLICATION_JSON)
