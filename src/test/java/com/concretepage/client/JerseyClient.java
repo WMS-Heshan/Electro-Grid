@@ -45,6 +45,7 @@ public class JerseyClient {
 //Add Inquiry Details
 	public void addInquiry(Inquiry inquiry) {
 		Client client = ClientBuilder.newClient();
+		//URL for Add Inquiry Details
 		WebTarget base = client.target("http://localhost:8080/Electro-grid/inquiry");
 		WebTarget add = base.path("inqadd");
 		Response response = add.request(MediaType.APPLICATION_JSON).post(Entity.json(inquiry));
